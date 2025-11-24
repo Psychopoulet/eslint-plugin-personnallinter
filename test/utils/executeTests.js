@@ -14,10 +14,14 @@ module.exports = function executeTests (cmd) {
 
             exec(cmd, {
                 "cwd": join(__dirname, "..", "..")
-            }, (err, stdout) => {
+            }, (err, stdout, stderr) => {
 
                 if (!err) {
                     reject(new Error("No error generated"));
+                }
+
+                else if (!stderr.startsWith("n/Oops! Something went wrong!")) {
+                    reject(stderr.trim());
                 }
 
                 else if (!stdout.includes("no-unused-vars")) {
