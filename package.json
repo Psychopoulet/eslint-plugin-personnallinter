@@ -1,7 +1,7 @@
 {
 
   "name": "eslint-plugin-personnallinter",
-  "version": "1.3.13",
+  "version": "2.0.0",
   "description": "personnal lint rules",
 
   "type": "commonjs",
@@ -22,7 +22,7 @@
     "clean": "echo 'clean : not TS module'",
     "build": "npm run-script clean && echo 'build : not TS module'",
 
-    "lint": "npx eslint --config .eslintrc.js --ext .js,.cjs --ignore-pattern test/patterns/* ./lib/**/* ./test/**/*",
+    "lint": "npx eslint --config eslint.config.js",
     "check-requires": "npx used-deps-analyzer ./package.json ./lib --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
     "check-updates": "npx check-version-modules",
     "unit-tests": "npm run-script build && npx nyc --reporter=html --reporter=text mocha",
