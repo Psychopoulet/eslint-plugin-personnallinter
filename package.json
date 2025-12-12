@@ -17,7 +17,7 @@
 
   "scripts": {
 
-    "prepare": "npx husky install",
+    "prepare": "npx husky || true",
 
     "clean": "echo 'clean : not TS module'",
     "build": "npm run-script clean && echo 'build : not TS module'",
@@ -31,9 +31,11 @@
 
   },
 
+  "bin": {},
   "files": [
     "/bin",
-    "/lib"
+    "/lib/cjs",
+    "/public"
   ],
   "engines": {
     "node": ">=16.0.0"
