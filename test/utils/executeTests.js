@@ -20,8 +20,8 @@ module.exports = function executeTests (cmd) {
                     reject(new Error("No error generated"));
                 }
 
-                else if (!stderr.startsWith("n/Oops! Something went wrong!")) {
-                    reject(stderr.trim());
+                else if (stderr.startsWith("n/Oops! Something went wrong!")) {
+                    reject(new Error(stderr.trim()));
                 }
 
                 else if (!stdout.includes("no-unused-vars")) {

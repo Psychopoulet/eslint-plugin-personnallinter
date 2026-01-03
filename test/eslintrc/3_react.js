@@ -12,5 +12,5 @@ module.exports = defineConfig({
     "plugins": {
         personnallinter
     },
-    "extends": [ "personnallinter/react" ]
+    "extends": [ personnallinter.configs.react ]
 });
