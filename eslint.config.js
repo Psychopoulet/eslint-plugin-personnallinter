@@ -19,7 +19,8 @@ module.exports = defineConfig([
             "./test/**/*"
         ],
         "ignores": [
-            "./test/patterns/*.js"
+            "./test/patterns/*.js",
+            "./coverage/**/*.js"
         ],
         "plugins": {
             personnallinter
