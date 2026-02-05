@@ -24,8 +24,8 @@ module.exports = function executeTests (cmd) {
                     reject(new Error(stderr.trim()));
                 }
 
-                else if (!stdout.includes("no-unused-vars")) {
-                    reject(new ReferenceError("No \"no-unused-vars\" error generated"));
+                else if (!stdout.includes("no-unused-vars") && !stdout.includes("@typescript-eslint/no-unused-vars")) {
+                    reject(new ReferenceError("No \"no-unused-vars\" or \"@typescript-eslint/no-unused-vars\" error generated"));
                 }
                 else if (!stdout.includes("no-var")) {
                     reject(new ReferenceError("No \"no-var\" error generated"));
