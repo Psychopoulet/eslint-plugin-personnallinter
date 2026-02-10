@@ -5,11 +5,13 @@
   "description": "personnal lint rules",
 
   "type": "commonjs",
+  "typings": "./lib/cjs/main.d.cts",
   "main": "./lib/cjs/main.cjs",
 
   "exports": {
     ".": {
       "require": {
+        "types": "./lib/cjs/main.d.cts",
         "default": "./lib/cjs/main.cjs"
       }
     }
@@ -56,6 +58,7 @@
     "husky": "9.1.7",
     "mocha": "11.7.5",
     "nyc": "17.1.0",
+    "typescript": "5.9.3",
     "used-deps-analyzer": "0.1.8"
   },
   "optionalDependencies": {
