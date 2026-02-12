@@ -9,9 +9,7 @@ for example :
 
 ```
 module.exports = {
-	// ...other config
-	parser: "@babel/eslint-parser",
-	// ...other config
+	"extends": [ "plugin:eslint-plugin-personnallinter/ts-back" ]
 };
 ```
 
@@ -21,13 +19,10 @@ become
 import { defineConfig } from "eslint/config";
 import babelParser from "@babel/eslint-parser";
 
-export default defineConfig([
-	{
-		// ...other config
-		languageOptions: {
-			parser: babelParser,
-		},
-		// ...other config
-	},
-]);
+export default defineConfig({
+    "plugins": {
+        personnallinter
+    },
+    "extends": [ personnallinter.configs["ts-back"] ]
+});
 ```
