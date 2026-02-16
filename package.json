@@ -84,7 +84,7 @@
   "homepage": "https://github.com/Psychopoulet/eslint-plugin-personnallinter#readme",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Psychopoulet/eslint-plugin-personnallinter"
+    "url": "git://github.com/Psychopoulet/eslint-plugin-personnallinter.git"
   },
   "bugs": {
     "url": "https://github.com/Psychopoulet/eslint-plugin-personnallinter/issues"
