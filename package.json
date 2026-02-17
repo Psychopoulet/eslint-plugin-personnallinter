@@ -32,7 +32,7 @@
     "build": "npm run build-back",
 
     "check-requires": "npx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
-    "check-updates": "npx check-version-modules",
+    "check-updates": "npx check-version-modules --no-fail-at-major",
     "unit-tests": "npm run build && npx nyc --reporter=html --reporter=text mocha",
 
     "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests"
@@ -47,15 +47,15 @@
 
   "dependencies": {
     "@stylistic/eslint-plugin": "5.8.0",
-    "@typescript-eslint/eslint-plugin": "8.55.0",
-    "@typescript-eslint/parser": "8.55.0",
-    "eslint": "10.0.0",
-    "eslint-plugin-n": "17.23.2",
+    "@typescript-eslint/eslint-plugin": "8.56.0",
+    "@typescript-eslint/parser": "8.56.0",
+    "eslint": "9.39.2",
+    "eslint-plugin-n": "17.24.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1"
   },
   "devDependencies": {
-    "check-version-modules": "2.2.0",
+    "check-version-modules": "2.2.1",
     "coveralls": "3.1.1",
     "husky": "9.1.7",
     "mocha": "11.7.5",
