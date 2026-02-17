@@ -1,9 +1,9 @@
 // deps
 
     // natives
-    const { exec } = require("child_process");
-    const { join } = require("path");
-    const { unlink } = require("fs");
+    const { exec } = require("node:child_process");
+    const { join } = require("node:path");
+    const { unlink } = require("node:fs");
 
 // consts
 
@@ -18,7 +18,13 @@ describe("compilation typescript", () => {
         after((done) => {
 
             unlink(join(__dirname, "typescript", "compilation.cjs"), (err) => {
-                return err ? done(err) : done();
+
+                if (err && "ENOENT" !== err.code) {
+                    return done(err);
+                }
+
+                return done();
+
             });
 
         });
