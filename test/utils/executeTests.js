@@ -20,31 +20,31 @@ module.exports = function executeTests (cmd) {
                     reject(new Error("No error generated"));
                 }
 
-                else if (stderr.startsWith("n/Oops! Something went wrong!")) {
+                else if (stderr?.startsWith("n/Oops! Something went wrong!")) {
                     reject(new Error(stderr.trim()));
                 }
 
-                else if (!stdout.includes("no-unused-vars") && !stdout.includes("@typescript-eslint/no-unused-vars")) {
+                else if (!stdout?.includes("no-unused-vars") && !stdout?.includes("@typescript-eslint/no-unused-vars")) {
                     reject(new ReferenceError("No \"no-unused-vars\" or \"@typescript-eslint/no-unused-vars\" error generated"));
                 }
-                else if (!stdout.includes("no-var")) {
+                else if (!stdout?.includes("no-var")) {
                     reject(new ReferenceError("No \"no-var\" error generated"));
                 }
 
-                else if (!stdout.includes("n/callback-return")) {
+                else if (!stdout?.includes("n/callback-return")) {
                     reject(new ReferenceError("No \"n/callback-return\" error generated"));
                 }
 
-                else if (!stdout.includes("@stylistic/array-bracket-newline")) {
+                else if (!stdout?.includes("@stylistic/array-bracket-newline")) {
                     reject(new ReferenceError("No \"@stylistic/array-bracket-newline\" error generated"));
                 }
-                else if (!stdout.includes("@stylistic/no-mixed-spaces-and-tabs")) {
+                else if (!stdout?.includes("@stylistic/no-mixed-spaces-and-tabs")) {
                     reject(new ReferenceError("No \"@stylistic/no-mixed-spaces-and-tabs\" error generated"));
                 }
-                else if (!stdout.includes("@stylistic/no-multi-spaces")) {
+                else if (!stdout?.includes("@stylistic/no-multi-spaces")) {
                     reject(new ReferenceError("No \"@stylistic/no-multi-spaces\" error generated"));
                 }
-                else if (!stdout.includes("@stylistic/quotes")) {
+                else if (!stdout?.includes("@stylistic/quotes")) {
                     reject(new ReferenceError("No \"@stylistic/quotes\" error generated"));
                 }
 
