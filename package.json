@@ -1,7 +1,7 @@
 {
 
   "name": "eslint-plugin-personnallinter",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Personnal lint rules.",
 
   "type": "commonjs",
@@ -32,7 +32,7 @@
     "build": "npm run build-back",
 
     "check-requires": "npx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
-    "check-updates": "npx check-version-modules --no-fail-at-major",
+    "check-updates": "npx check-version-modules --no-fail-at-major --fail-at-minor --fail-at-patch",
     "unit-tests": "npm run build && npx nyc --reporter=html --reporter=text mocha",
 
     "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests"
@@ -55,8 +55,9 @@
     "eslint-plugin-react-hooks": "7.0.1"
   },
   "devDependencies": {
-    "check-version-modules": "2.2.1",
+    "check-version-modules": "2.2.2",
     "coveralls": "3.1.1",
+    "globals": "17.3.0",
     "husky": "9.1.7",
     "mocha": "11.7.5",
     "nyc": "17.1.0",
