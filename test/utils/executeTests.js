@@ -1,8 +1,8 @@
 // deps
 
     // natives
-    const { join } = require("node:path");
     const { exec } = require("node:child_process");
+    const { join } = require("node:path");
 
 // module
 

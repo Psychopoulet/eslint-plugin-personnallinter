@@ -1,10 +1,10 @@
 // deps
 
     // natives
+    const { lstat } = require("node:fs");
+    const { unlink } = require("node:fs/promises");
     const { exec } = require("node:child_process");
     const { join } = require("node:path");
-    const { unlink } = require("node:fs/promises");
-    const { lstat } = require("node:fs");
 
 // consts
 
