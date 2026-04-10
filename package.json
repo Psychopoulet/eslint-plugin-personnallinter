@@ -1,7 +1,7 @@
 {
 
   "name": "eslint-plugin-personnallinter",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Personnal lint rules.",
 
   "type": "commonjs",
@@ -25,7 +25,7 @@
     "lint-tests": "npx eslint --config .eslintrc-tests.js --ext .js,.cjs,.mjs ./test/**/*",
     "lint": "npm run lint-back && npm run lint-tests",
 
-    "clean-back": "echo 'clean : not TS module",
+    "clean-back": "echo 'clean : not TS module'",
     "clean": "npm run clean-back",
 
     "build-back": "npm run clean && echo 'build : not TS module'",
@@ -33,9 +33,10 @@
 
     "check-requires": "npx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
     "check-updates": "npx check-version-modules --no-fail-at-major --fail-at-minor --fail-at-patch",
-    "unit-tests": "npm run build && npx nyc --reporter=html --reporter=text mocha",
+    "unit-tests": "npx mocha",
+    "unit-tests-local": "npx nyc --reporter=html --reporter=text mocha",
 
-    "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests"
+    "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests-local"
 
   },
   "files": [
@@ -46,10 +47,10 @@
   },
 
   "dependencies": {
-    "@stylistic/eslint-plugin": "5.9.0",
-    "@typescript-eslint/eslint-plugin": "8.56.1",
-    "@typescript-eslint/parser": "8.56.1",
-    "eslint": "9.39.3",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@typescript-eslint/eslint-plugin": "8.58.1",
+    "@typescript-eslint/parser": "8.58.1",
+    "eslint": "9.39.4",
     "eslint-plugin-n": "17.24.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1"

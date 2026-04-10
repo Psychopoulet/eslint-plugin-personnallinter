@@ -1,0 +1,75 @@
+# from https://blog.stephane-robert.info/docs/pipeline-cicd/github/
+# and  https://apprendre-la-programmation.net/configurer-ci-github-actions/
+
+# ══════════════════════════════════════════════════════════════════════════════
+# METADATA
+# ══════════════════════════════════════════════════════════════════════════════
+
+name: CI                                    # Display name in the GitHub UI
+run-name: Tests for ${{ github.ref_name }}  # Dynamic run name
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true                  # Cancel in-progress workflows of the same ref
+
+# ══════════════════════════════════════════════════════════════════════════════
+# WHEN? (Trigger events)
+# ══════════════════════════════════════════════════════════════════════════════
+
+on:
+  pull_request:
+    branches: [ master ]                    # On PR targeting master
+  workflow_dispatch:                        # Manual trigger in the UI
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SECURITY (Permissions)
+# ══════════════════════════════════════════════════════════════════════════════
+
+permissions:
+  contents: read                            # Read repository contents (least privilege)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# GLOBAL CONFIGURATION
+# ══════════════════════════════════════════════════════════════════════════════
+
+env:
+  NODE_VERSION: '24'                          # Available in all jobs
+
+# ══════════════════════════════════════════════════════════════════════════════
+# JOBS (Work units)
+# ══════════════════════════════════════════════════════════════════════════════
+
+jobs:
+
+  # Job 1: Tests
+  tests:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+
+      - name: Setup the repo # https://github.com/actions/checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2 (https://api.github.com/repos/actions/checkout/git/refs/tags/v6.0.2)
+
+      - name: Setup NodeJS v${{ env.NODE_VERSION }} # https://github.com/actions/setup-node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0  (https://api.github.com/repos/actions/setup-node/git/refs/tags/v6.3.0)
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linters
+        run: npm run lint
+
+      - name: Check requires (used-deps-analyzer)
+        run: npm run check-requires
+
+      - name: Check updates (check-version-modules)
+        run: npm run check-updates
+
+      - name: Run build
+        run: npm run build
+
+      - name: Run unit tests
+        run: npm run unit-tests
