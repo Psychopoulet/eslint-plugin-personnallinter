@@ -5,10 +5,10 @@
 # METADATA
 # ══════════════════════════════════════════════════════════════════════════════
 
-name: CI                                    # Display name in the GitHub UI
+name: Tests                                 # Display name in the GitHub UI
 run-name: Tests for ${{ github.ref_name }}  # Dynamic run name
 concurrency:
-  group: ${{ github.ref }}
+  group: tests-${{ github.ref }}
   cancel-in-progress: true                  # Cancel in-progress workflows of the same ref
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -32,7 +32,7 @@ permissions:
 # ══════════════════════════════════════════════════════════════════════════════
 
 env:
-  NODE_VERSION: '24'                          # Available in all jobs
+  NODE_VERSION: '24'                        # Available in all jobs
 
 # ══════════════════════════════════════════════════════════════════════════════
 # JOBS (Work units)
@@ -40,7 +40,6 @@ env:
 
 jobs:
 
-  # Job 1: Tests
   tests:
 
     runs-on: ubuntu-latest
@@ -48,7 +47,7 @@ jobs:
 
     steps:
 
-      - name: Setup the repo # https://github.com/actions/checkout
+      - name: Setup the repo                # https://github.com/actions/checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2 (https://api.github.com/repos/actions/checkout/git/refs/tags/v6.0.2)
 
       - name: Setup NodeJS v${{ env.NODE_VERSION }} # https://github.com/actions/setup-node
