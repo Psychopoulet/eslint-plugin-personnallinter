@@ -47,14 +47,19 @@ jobs:
 
     steps:
 
-      - name: Setup the repo                # https://github.com/actions/checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Ensure steps to avoid vulnerabilities
+        uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # curl -s https://api.github.com/repos/step-security/harden-runner/commits/v2.14.2 | jq -r .sha
+        with:
+          egress-policy: audit
+
+      - name: Setup the repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # curl -s https://api.github.com/repos/actions/checkout/commits/v6.0.2 | jq -r .sha
         with:
           fetch-depth: 1
           fetch-tags: true                  # so local checks stay consistent; ls-remote still authoritative
 
-      - name: Setup NodeJS v${{ env.NODE_VERSION }} # https://github.com/actions/setup-node
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0  (https://api.github.com/repos/actions/setup-node/git/refs/tags/v6.3.0)
+      - name: Setup NodeJS v${{ env.NODE_VERSION }}
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # curl -s https://api.github.com/repos/actions/setup-node/commits/v6.3.0 | jq -r .sha
         with:
           node-version: ${{ env.NODE_VERSION }}
 
