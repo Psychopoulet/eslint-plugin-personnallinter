@@ -19,6 +19,8 @@
 
   "scripts": {
 
+    "prepare": "npx husky || true",
+
     "lint-back": "npx eslint --config .eslintrc-back.js --ext .js,.cjs,.mjs ./lib/cjs/**/*",
     "lint-tests": "npx eslint --config .eslintrc-tests.js --ext .js,.cjs,.mjs ./test/**/*",
     "lint": "npm run lint-back && npm run lint-tests",
@@ -57,6 +59,7 @@
     "check-version-modules": "2.2.2",
     "coveralls": "3.1.1",
     "globals": "17.4.0",
+    "husky": "9.1.7",
     "mocha": "11.7.5",
     "nyc": "18.0.0",
     "typescript": "5.9.3",
@@ -66,6 +69,12 @@
     "colors": "1.4.0"
   },
 
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run unit-tests"
+    }
+  },
   "keywords": [
     "lint",
     "eslint",

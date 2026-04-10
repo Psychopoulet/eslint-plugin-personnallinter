@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-npm run build && npm run unit-tests
-
-exit 0
