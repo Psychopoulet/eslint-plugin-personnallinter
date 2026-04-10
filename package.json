@@ -33,9 +33,10 @@
 
     "check-requires": "npx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
     "check-updates": "npx check-version-modules --no-fail-at-major --fail-at-minor --fail-at-patch",
-    "unit-tests": "npm run build && npx nyc --reporter=html --reporter=text mocha",
+    "unit-tests": "npx mocha",
+    "unit-tests-local": "npx nyc --reporter=html --reporter=text mocha",
 
-    "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests"
+    "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests-local"
 
   },
   "files": [
