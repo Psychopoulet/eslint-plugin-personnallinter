@@ -48,8 +48,8 @@
 
   "dependencies": {
     "@stylistic/eslint-plugin": "5.10.0",
-    "@typescript-eslint/eslint-plugin": "8.57.1",
-    "@typescript-eslint/parser": "8.57.1",
+    "@typescript-eslint/eslint-plugin": "8.58.1",
+    "@typescript-eslint/parser": "8.58.1",
     "eslint": "9.39.4",
     "eslint-plugin-n": "17.24.0",
     "eslint-plugin-react": "7.37.5",
