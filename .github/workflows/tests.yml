@@ -54,6 +54,8 @@ jobs:
 
       - name: Setup the repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # curl -s https://api.github.com/repos/actions/checkout/commits/v6.0.2 | jq -r .sha
+        with:
+          fetch-depth: 0                    # gitleaks uses a git rev range (e.g. push before..after); depth 1 often misses those commits
 
       - name: Scan for secrets leaks
         uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # curl -s https://api.github.com/repos/gitleaks/gitleaks-action/commits/v2.3.9 | jq -r .sha
