@@ -57,6 +57,8 @@ jobs:
 
       - name: Scan for secrets leaks
         uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # curl -s https://api.github.com/repos/gitleaks/gitleaks-action/commits/v2.3.9 | jq -r .sha
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup NodeJS v${{ env.NODE_VERSION }}
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # curl -s https://api.github.com/repos/actions/setup-node/commits/v6.3.0 | jq -r .sha
