@@ -1,7 +1,7 @@
 {
 
   "name": "eslint-plugin-personnallinter",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Personnal lint rules.",
 
   "type": "commonjs",
@@ -36,7 +36,7 @@
     "unit-tests": "npx mocha",
     "unit-tests-local": "npx nyc --reporter=html --reporter=text mocha",
 
-    "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run unit-tests-local"
+    "tests": "npm run lint && npm run check-requires && npm run check-updates && npm run build && npm run unit-tests-local"
 
   },
   "files": [
