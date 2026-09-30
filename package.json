@@ -1,7 +1,7 @@
 {
 
   "name": "eslint-plugin-personnallinter",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Personnal lint rules.",
 
   "type": "commonjs",
@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "8.71.0",
     "@typescript-eslint/parser": "8.71.0",
     "eslint": "9.39.4",
-    "eslint-plugin-n": "17.24.0",
+    "eslint-plugin-n": "18.4.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1"
   },
@@ -61,7 +61,7 @@
     "husky": "9.1.7",
     "mocha": "12.0.2",
     "nyc": "18.0.0",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "used-deps-analyzer": "0.4.0"
   },
   "optionalDependencies": {
