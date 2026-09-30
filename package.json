@@ -57,7 +57,6 @@
   "devDependencies": {
     "check-node-engine": "1.0.0",
     "check-version-modules": "2.5.0",
-    "coveralls": "3.1.1",
     "globals": "17.6.0",
     "husky": "9.1.7",
     "mocha": "11.7.6",
