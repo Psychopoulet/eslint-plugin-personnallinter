@@ -14,7 +14,7 @@
 
 describe("compilation typescript", () => {
 
-    const compilationSource = join(__dirname, "typescript", "compilation.cts");
+    const compilationConfig = join(__dirname, "typescript", "tsconfig.json");
     const compilationTarget = join(__dirname, "typescript", "compilation.cjs");
 
     before(() => {
@@ -51,10 +51,8 @@ describe("compilation typescript", () => {
 
             const args = [
                 "npx tsc",
-                compilationSource,
-                "--target es6",
-                "--module commonjs",
-                "--esModuleInterop"
+                "--project",
+                compilationConfig
             ];
 
             exec(args.join(" "), {
