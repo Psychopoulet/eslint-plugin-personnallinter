@@ -40,10 +40,30 @@ env:
 
 jobs:
 
+  require-develop-source:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+
+    steps:
+
+      - name: Ensure steps to avoid vulnerabilities
+        uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # curl -s https://api.github.com/repos/step-security/harden-runner/commits/v2.19.3 | jq -r .sha
+        with:
+          egress-policy: audit
+
+      - name: Only allow PRs from develop into master
+        run: |
+          if [ "${{ github.base_ref }}" = "master" ] && [ "${{ github.head_ref }}" != "develop" ]; then
+            echo "::error::Merges into master are only allowed from the 'develop' branch (got '${{ github.head_ref }}')."
+            exit 1
+          fi
+
   tests:
 
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs: require-develop-source
 
     steps:
 
@@ -58,7 +78,7 @@ jobs:
           fetch-depth: 0                    # gitleaks uses a git rev range (e.g. push before..after); depth 1 often misses those commits
 
       - name: Scan for secrets leaks
-        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # curl -s https://api.github.com/repos/gitleaks/gitleaks-action/commits/v2.3.9 | jq -r .sha
+        uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # curl -s https://api.github.com/repos/gitleaks/gitleaks-action/commits/v3.0.0 | jq -r .sha
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -69,6 +89,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Run audit
+        run: npm audit --omit=dev --omit=optional
 
       - name: Run linters
         run: npm run lint
