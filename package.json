@@ -32,10 +32,10 @@
     "check-node-engine": "npx check-node-engine",
     "check-requires": "npx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
     "check-updates": "npx check-version-modules --no-fail-at-major --fail-at-minor --fail-at-patch",
-    "unit-tests": "npx mocha",
-    "unit-tests-local": "npx nyc --reporter=html --reporter=text mocha",
+    "unit-tests": "npx c8 --reporter=text-summary --all --include \"lib/cjs/**/*.js\" --include \"lib/cjs/**/*.cjs\" --extension .js --extension .cjs mocha",
+    "unit-tests-local": "npx c8 --reporter=html --reporter=text --all --include \"lib/cjs/**/*.js\" --include \"lib/cjs/**/*.cjs\" --extension .js --extension .cjs mocha",
 
-    "tests": "npm run lint && npm run check-node-engine && npm run check-requires && npm run check-updates && npm run build && npm run unit-tests-local"
+    "tests": "npm run lint && npm run check-node-engine && npm run check-requires && npm run check-updates && npm run build && npm run unit-tests"
 
   },
   "files": [
@@ -47,20 +47,20 @@
 
   "dependencies": {
     "@stylistic/eslint-plugin": "5.10.0",
-    "@typescript-eslint/eslint-plugin": "8.71.0",
-    "@typescript-eslint/parser": "8.71.0",
+    "@typescript-eslint/eslint-plugin": "8.71.2",
+    "@typescript-eslint/parser": "8.71.2",
     "eslint": "9.39.4",
-    "eslint-plugin-n": "18.4.0",
+    "eslint-plugin-n": "18.4.1",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1"
   },
   "devDependencies": {
+    "c8": "12.0.0",
     "check-node-engine": "1.2.0",
     "check-version-modules": "2.5.0",
-    "globals": "17.12.0",
+    "globals": "17.13.0",
     "husky": "9.1.7",
-    "mocha": "12.0.2",
-    "nyc": "18.0.0",
+    "mocha": "12.0.3",
     "typescript": "6.0.3",
     "used-deps-analyzer": "0.4.0"
   },
