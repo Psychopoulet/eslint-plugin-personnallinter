@@ -6,10 +6,6 @@
     const { exec } = require("node:child_process");
     const { join } = require("node:path");
 
-// consts
-
-    const MAX_TIMEOUT = 10000;
-
 // tests
 
 describe("compilation typescript", () => {
@@ -50,7 +46,7 @@ describe("compilation typescript", () => {
         return new Promise((resolve, reject) => {
 
             const args = [
-                "npx tsc",
+                "bunx tsc",
                 "--project",
                 compilationConfig
             ];
@@ -64,12 +60,12 @@ describe("compilation typescript", () => {
 
         });
 
-    }).timeout(MAX_TIMEOUT);
+    });
 
     it("should exec compiled typescript file", (done) => {
 
         const args = [
-            "node",
+            "bun",
             compilationTarget
         ];
 
@@ -80,6 +76,6 @@ describe("compilation typescript", () => {
             return err ? done(err) : done();
         });
 
-    }).timeout(MAX_TIMEOUT);
+    });
 
 });

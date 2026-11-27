@@ -10,6 +10,6 @@
 
 describe("react", () => {
 
-    executeTests("npx eslint -c ./test/eslintrc/3_react.js --ext .ts,.cts,.tsx ./test/patterns/3_react.tsx");
+    executeTests("bunx eslint -c ./test/eslintrc/3_react.js --ext .ts,.cts,.tsx ./test/patterns/3_react.tsx");
 
 });

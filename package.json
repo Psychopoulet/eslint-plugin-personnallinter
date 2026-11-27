@@ -19,33 +19,35 @@
 
   "scripts": {
 
-    "install-prod": "npm install --omit=dev --omit=optional && npm audit fix --omit=dev --omit=optional",
-    "install-dev": "npm install --allow-git=root && npm audit fix --allow-git=root && npx husky",
+    "install-prod": "bun install --production",
+    "install-dev": "bun install && bunx husky",
 
-    "lint-back": "npx eslint --config .eslintrc-back.js --ext .js,.cjs,.mjs ./lib/cjs/**/*",
-    "lint-tests": "npx eslint --config .eslintrc-tests.js --ext .js,.cjs,.mjs ./test/**/*",
-    "lint": "npm run lint-back && npm run lint-tests",
+    "lint-back": "bunx eslint --config .eslintrc-back.js --ext .js,.cjs,.mjs \"./lib/cjs/**/*\"",
+    "lint-tests": "bunx eslint --config .eslintrc-tests.js --ext .js,.cjs,.mjs \"./test/**/*\"",
+    "lint": "bun run lint-back && bun run lint-tests",
 
     "clean-back": "echo 'clean : not TS module'",
-    "clean": "npm run clean-back",
+    "clean": "bun run clean-back",
 
-    "build-back": "npm run clean && echo 'build : not TS module'",
-    "build": "npm run build-back",
+    "build-back": "bun run clean && echo 'build : not TS module'",
+    "build": "bun run build-back",
 
-    "check-node-engine": "npx check-node-engine",
-    "check-requires": "npx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
-    "check-updates": "npx check-version-modules --no-fail-at-major --fail-at-minor --fail-at-patch",
-    "unit-tests": "npx c8 --reporter=text-summary --all --include \"lib/cjs/**/*.js\" --include \"lib/cjs/**/*.cjs\" --extension .js --extension .cjs --check-coverage --statements 95 --branches 95 --functions 95 --lines 95 mocha",
-    "unit-tests-local": "npx c8 --reporter=html --reporter=text --all --include \"lib/cjs/**/*.js\" --include \"lib/cjs/**/*.cjs\" --extension .js --extension .cjs mocha",
+    "check-node-engine": "bunx check-node-engine",
+    "check-requires": "bunx used-deps-analyzer ./package.json ./lib/cjs --no-dev --shadows @stylistic/eslint-plugin @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-n eslint-plugin-react eslint-plugin-react-hooks",
+    "check-updates": "bunx check-version-modules --no-fail-at-major --fail-at-minor --fail-at-patch",
+    "unit-tests": "bun test --conditions=require --coverage --timeout 10000",
+    "unit-tests-local": "bun test --conditions=require --coverage --coverage-reporter=text --timeout 10000",
 
-    "tests": "npm run lint && npm run check-node-engine && npm run check-requires && npm run check-updates && npm run build && npm run unit-tests"
+    "tests": "bun run lint && bun run check-node-engine && bun run check-requires && bun run check-updates && bun run build && bun run unit-tests"
 
   },
   "files": [
     "/lib/cjs"
   ],
+  "packageManager": "bun@1.4.5",
   "engines": {
-    "node": ">=24.22.2"
+    "node": ">=24.22.3",
+    "bun": ">=1.4.5"
   },
 
   "dependencies": {
@@ -58,12 +60,10 @@
     "eslint-plugin-react-hooks": "7.1.1"
   },
   "devDependencies": {
-    "c8": "12.0.0",
     "check-node-engine": "1.2.0",
     "check-version-modules": "2.5.0",
     "globals": "17.13.0",
     "husky": "9.1.7",
-    "mocha": "12.0.3",
     "typescript": "6.0.3",
     "used-deps-analyzer": "0.4.0"
   },

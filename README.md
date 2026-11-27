@@ -42,7 +42,7 @@ export default defineConfig({
 ## Tests
 
 ```bash
-$ npm run tests
+$ bun run tests
 ```
 
 ## License

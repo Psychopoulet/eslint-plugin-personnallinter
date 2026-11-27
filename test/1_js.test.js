@@ -8,17 +8,17 @@
 
 // tests
 
-describe("ts", () => {
+describe("js", () => {
 
     describe("front", () => {
 
-        executeTests("npx eslint -c ./test/eslintrc/2-1_ts-front.js --ext .ts,.cts ./test/patterns/2_ts.ts");
+        executeTests("bunx eslint -c ./test/eslintrc/1-1_js-front.js --ext .js,.cjs ./test/patterns/1_js.js");
 
     });
 
     describe("back", () => {
 
-        executeTests("npx eslint -c ./test/eslintrc/2-2_ts-back.js --ext .ts,.cts ./test/patterns/2_ts.ts");
+        executeTests("bunx eslint -c ./test/eslintrc/1-2_js-back.js --ext .js,.cjs ./test/patterns/1_js.js");
 
     });
 

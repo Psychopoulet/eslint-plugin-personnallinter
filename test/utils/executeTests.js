@@ -56,6 +56,6 @@ module.exports = function executeTests (cmd) {
 
         });
 
-    }).timeout(10 * 1000);
+    });
 
 };
